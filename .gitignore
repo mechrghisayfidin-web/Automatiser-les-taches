@@ -49,3 +49,39 @@ prompt
 server.log
 # Skills directory
 /skills/
+
+
+
+
+# ======================
+# Python (CRITICAL)
+# ======================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# virtual environments
+venv/
+.venv/
+env/
+
+# distribution
+dist/
+build/
+*.egg-info/
+
+# ======================
+# Logs (global)
+# ======================
+*.log
+
+# ======================
+# OS / System
+# ======================
+Thumbs.db
+
+# ======================
+# Optional (use carefully)
+# ======================
+# test/
+# prompt/
