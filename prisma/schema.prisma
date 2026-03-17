@@ -1,0 +1,108 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// المهام المجدولة
+model Task {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  type        String   // file_organization, data_processing, web_scraping, email_automation
+  status      String   @default("pending") // pending, running, completed, failed
+  schedule    String?  // cron expression
+  config      String   // JSON config
+  lastRun     DateTime?
+  nextRun     DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  logs        Log[]
+}
+
+// سجلات التنفيذ
+model Log {
+  id        String   @id @default(cuid())
+  taskId    String?
+  task      Task?   @relation(fields: [taskId], references: [id])
+  level     String   // info, warning, error
+  message   String
+  details   String?  // JSON details
+  createdAt DateTime @default(now())
+}
+
+// وظائف استخراج البيانات من الويب
+model ScrapingJob {
+  id           String   @id @default(cuid())
+  name         String
+  url          String
+  selector     String?  // CSS selector
+  extractType  String   // text, links, images, tables, custom
+  schedule     String?
+  lastResult   String?  // JSON results
+  status       String   @default("active")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// وظائف البريد الإلكتروني
+model EmailJob {
+  id          String   @id @default(cuid())
+  name        String
+  recipients  String   // comma separated emails
+  subject     String
+  body        String?
+  attachments String?  // comma separated file paths
+  schedule    String?
+  condition   String?  // condition to send
+  status      String   @default("active")
+  lastSent    DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// قواعد تنظيم الملفات
+model FileRule {
+  id             String   @id @default(cuid())
+  name           String
+  sourceFolder   String
+  targetFolder   String
+  filePattern    String?  // regex pattern
+  namingRule     String?  // naming convention
+  action         String   // move, copy, rename, archive
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+// مهام معالجة البيانات
+model DataJob {
+  id           String   @id @default(cuid())
+  name         String
+  sourceType   String   // csv, excel, json, api
+  sourcePath   String?  // file path or API URL
+  operations   String   // JSON array of operations
+  outputPath   String?
+  outputFormat String   @default("excel")
+  schedule     String?
+  status       String   @default("active")
+  lastRun      DateTime?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// إعدادات النظام
+model Setting {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String
+  category  String   @default("general")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

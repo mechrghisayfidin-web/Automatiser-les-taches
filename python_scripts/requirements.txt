@@ -1,0 +1,32 @@
+# متطلبات مساعد الأتمتة الذكي
+# Smart Automation Assistant Requirements
+
+# معالجة البيانات
+pandas>=2.0.0
+numpy>=1.24.0
+openpyxl>=3.1.0
+xlrd>=2.0.0
+
+# استخراج البيانات من الويب
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+requests>=2.31.0
+selenium>=4.15.0
+
+# أدوات إضافية
+python-dateutil>=2.8.0
+pytz>=2023.0
+
+# إنشاء التقارير
+jinja2>=3.1.0
+reportlab>=4.0.0  # لإنشاء ملفات PDF
+
+# الجدولة
+schedule>=1.2.0
+apscheduler>=3.10.0
+
+# التسجيل
+colorlog>=6.7.0
+
+# إعدادات البيئة
+python-dotenv>=1.0.0
