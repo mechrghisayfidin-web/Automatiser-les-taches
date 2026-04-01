@@ -3,6 +3,16 @@
 
 ## ⚡ Quick Start
 
+
+
+
+
+
+
+
+
+
+<div align="center">
 ```bash
 git clone https://github.com/USERNAME/Automatiser-les-taches.git
 cd Automatiser-les-taches
@@ -18,12 +28,6 @@ npm run dev
 
 
 
-
-
-
-
-
-<div align="center">
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue?logo=python&logoColor=white)
 ![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)
