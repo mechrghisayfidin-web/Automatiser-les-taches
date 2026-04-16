@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   keywords: ["Z.ai", "Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "AI development", "React"],
   authors: [{ name: "Z.ai Team" }],
   icons: {
-    icon: "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
+    icon: "favicon.svg",
   },
   openGraph: {
     title: "Z.ai Code Scaffold",
